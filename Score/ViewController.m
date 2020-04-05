@@ -10,6 +10,11 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UILabel *label;
+
+- (IBAction)changeGreeting:(id)sender;
+
 @end
 
 @implementation ViewController
@@ -19,5 +24,17 @@
     // Do any additional setup after loading the view.
 }
 
+- (IBAction)changeGreeting:(id)sender {
+    self.userName = self.textField.text;
+    NSString *greeting = [self.userName length] == 0 ? @"world" : self.userName;
+    self.label.text = [NSString stringWithFormat:@"hello %@", greeting];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.textField) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
 
 @end
