@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class DetailViewController;
+@class BirdSightingDataController;
 
 @interface MasterViewController : UITableViewController
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
-
+@property (strong, nonatomic) BirdSightingDataController *dataController;
 
 @end
 
