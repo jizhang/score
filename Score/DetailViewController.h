@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController
+@class BirdSighting;
 
-@property (strong, nonatomic) NSDate *detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@interface DetailViewController : UITableViewController
+
+@property (strong, nonatomic) BirdSighting *sighting;
+@property (weak, nonatomic) IBOutlet UILabel *birdNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
