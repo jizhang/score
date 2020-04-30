@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import "BirdSightingDataController.h"
 #import "BirdSighting.h"
+#import "AddSightingViewController.h"
 
 @implementation MasterViewController
 
@@ -61,6 +62,23 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
+}
+
+- (IBAction)done:(UIStoryboardSegue *)segue {
+    if ([[segue identifier] isEqualToString:@"ReturnInput"]) {
+        AddSightingViewController *addController = [segue sourceViewController];
+        if (addController.birdSighting) {
+            [self.dataController addBirdSightingWithSighting:addController.birdSighting];
+            [[self tableView] reloadData];
+        }
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+}
+
+- (IBAction)cancel:(UIStoryboardSegue *)segue {
+    if ([[segue identifier] isEqualToString:@"CancelInput"]) {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
 }
 
 @end
