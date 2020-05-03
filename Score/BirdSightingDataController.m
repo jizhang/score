@@ -6,8 +6,8 @@
 //  Copyright © 2020 Ji ZHANG. All rights reserved.
 //
 
-#import "BirdSightingDataController.h"
 #import "BirdSighting.h"
+#import "BirdSightingDataController.h"
 
 @interface BirdSightingDataController ()
 
@@ -47,7 +47,7 @@
     return [self.masterBirdSightingList count];
 }
 
-- (BirdSighting *)objectinListAtIndex:(NSUInteger)theIndex {
+- (BirdSighting *)objectInListAtIndex:(NSUInteger)theIndex {
     return [self.masterBirdSightingList objectAtIndex:theIndex];
 }
 

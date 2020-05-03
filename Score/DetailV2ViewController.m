@@ -1,13 +1,13 @@
 //
-//  DetailViewController.m
+//  DetailV2ViewController.m
 //  Score
 //
 //  Created by Ji ZHANG on 2020/5/3.
 //  Copyright © 2020 Ji ZHANG. All rights reserved.
 //
 
-#import "BirdSighting.h"
 #import "DetailViewController.h"
+#import "BirdSighting.h"
 
 @interface DetailViewController ()
 

@@ -1,13 +1,16 @@
 //
-//  MainViewController.m
+//  AddViewController.m
 //  Score
 //
 //  Created by Ji ZHANG on 2020/5/1.
 //  Copyright © 2020 Ji ZHANG. All rights reserved.
 //
 
-#import "AddViewController.h"
 #import "Masonry.h"
+
+#import "BirdSighting.h"
+#import "AddViewController.h"
+#import "MasterViewController.h"
 
 @interface AddViewController ()
 
@@ -42,6 +45,7 @@
 
     self.birdNameInput = [[UITextField alloc] init];
     self.birdNameInput.borderStyle = UITextBorderStyleRoundedRect;
+    self.birdNameInput.delegate = self;
     [self.birdNameCell addSubview:self.birdNameInput];
 
     [self.birdNameInput mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -66,6 +70,7 @@
 
     self.locationInput = [[UITextField alloc] init];
     self.locationInput.borderStyle = UITextBorderStyleRoundedRect;
+    self.locationInput.delegate = self;
     [self.locationCell addSubview:self.locationInput];
 
     [self.locationInput mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -73,6 +78,13 @@
         make.baseline.equalTo(self.locationLabel.mas_baseline);
         make.trailing.equalTo(self.locationCell.mas_trailingMargin);
     }];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -92,6 +104,25 @@
         default:
             return nil;
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if ((textField == self.birdNameInput) || (textField == self.locationInput)) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (void)done {
+    if (self.birdNameInput.text.length && self.locationInput.text.length) {
+        NSDate *today = [NSDate date];
+        BirdSighting *sighting = [[BirdSighting alloc] initWithName:self.birdNameInput.text location:self.locationInput.text date:today];
+        self.doneHandler(sighting);
+    }
+}
+
+- (void)cancel {
+    self.cancelHandler();
 }
 
 @end
