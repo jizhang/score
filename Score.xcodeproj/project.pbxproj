@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7413F930245E8832009C5266 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7413F92F245E8832009C5266 /* MainViewController.m */; };
 		7415B4132452E46A00E0566A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7415B4122452E46A00E0566A /* AppDelegate.m */; };
 		7415B4192452E46A00E0566A /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7415B4182452E46A00E0566A /* MasterViewController.m */; };
 		7415B41C2452E46A00E0566A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7415B41B2452E46A00E0566A /* DetailViewController.m */; };
@@ -16,13 +17,15 @@
 		7415B4272452E46E00E0566A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7415B4262452E46E00E0566A /* main.m */; };
 		7415B42F2452EFF600E0566A /* BirdSighting.m in Sources */ = {isa = PBXBuildFile; fileRef = 7415B42E2452EFF600E0566A /* BirdSighting.m */; };
 		7415B4322453001300E0566A /* BirdSightingDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7415B4312453001300E0566A /* BirdSightingDataController.m */; };
-		741B8D69245C3F6A007AB1AC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B8D68245C3F6A007AB1AC /* MainViewController.m */; };
+		741B8D69245C3F6A007AB1AC /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B8D68245C3F6A007AB1AC /* AddViewController.m */; };
 		742CF1C8245ADA4B00C05A79 /* AddSightingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 742CF1C7245ADA4B00C05A79 /* AddSightingViewController.m */; };
 		EA2ACB5E2FF8E86BC0C87129 /* libPods-Score.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AED506A13206F80B5C6BEE5 /* libPods-Score.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3AED506A13206F80B5C6BEE5 /* libPods-Score.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Score.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7413F92E245E8832009C5266 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		7413F92F245E8832009C5266 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		7415B40E2452E46A00E0566A /* Score.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Score.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7415B4112452E46A00E0566A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7415B4122452E46A00E0566A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -39,8 +42,8 @@
 		7415B42E2452EFF600E0566A /* BirdSighting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BirdSighting.m; sourceTree = "<group>"; };
 		7415B4302453001300E0566A /* BirdSightingDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BirdSightingDataController.h; sourceTree = "<group>"; };
 		7415B4312453001300E0566A /* BirdSightingDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BirdSightingDataController.m; sourceTree = "<group>"; };
-		741B8D67245C3F6A007AB1AC /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		741B8D68245C3F6A007AB1AC /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		741B8D67245C3F6A007AB1AC /* AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
+		741B8D68245C3F6A007AB1AC /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		742CF1C6245ADA4B00C05A79 /* AddSightingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddSightingViewController.h; sourceTree = "<group>"; };
 		742CF1C7245ADA4B00C05A79 /* AddSightingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddSightingViewController.m; sourceTree = "<group>"; };
 		B3A50787282470237BC201C8 /* Pods-Score.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Score.debug.xcconfig"; path = "Target Support Files/Pods-Score/Pods-Score.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,8 +100,10 @@
 		7415B4102452E46A00E0566A /* Score */ = {
 			isa = PBXGroup;
 			children = (
-				741B8D67245C3F6A007AB1AC /* MainViewController.h */,
-				741B8D68245C3F6A007AB1AC /* MainViewController.m */,
+				7413F92E245E8832009C5266 /* MainViewController.h */,
+				7413F92F245E8832009C5266 /* MainViewController.m */,
+				741B8D67245C3F6A007AB1AC /* AddViewController.h */,
+				741B8D68245C3F6A007AB1AC /* AddViewController.m */,
 				7415B42D2452EFF600E0566A /* BirdSighting.h */,
 				7415B42E2452EFF600E0566A /* BirdSighting.m */,
 				7415B4302453001300E0566A /* BirdSightingDataController.h */,
@@ -219,7 +224,8 @@
 				742CF1C8245ADA4B00C05A79 /* AddSightingViewController.m in Sources */,
 				7415B4272452E46E00E0566A /* main.m in Sources */,
 				7415B4132452E46A00E0566A /* AppDelegate.m in Sources */,
-				741B8D69245C3F6A007AB1AC /* MainViewController.m in Sources */,
+				7413F930245E8832009C5266 /* MainViewController.m in Sources */,
+				741B8D69245C3F6A007AB1AC /* AddViewController.m in Sources */,
 				7415B4192452E46A00E0566A /* MasterViewController.m in Sources */,
 				7415B42F2452EFF600E0566A /* BirdSighting.m in Sources */,
 				7415B4322453001300E0566A /* BirdSightingDataController.m in Sources */,

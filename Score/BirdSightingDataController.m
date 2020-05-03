@@ -32,6 +32,9 @@
     NSDate *today = [NSDate date];
     sighting = [[BirdSighting alloc] initWithName:@"Pigeon" location:@"Everywhere" date:today];
     [self addBirdSightingWithSighting:sighting];
+
+    sighting = [[BirdSighting alloc] initWithName:@"Kiwi" location:@"China" date:today];
+    [self addBirdSightingWithSighting:sighting];
 }
 
 - (void)setMasterBirdSightingList:(NSMutableArray *)newList {

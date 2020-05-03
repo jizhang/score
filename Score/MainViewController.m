@@ -1,78 +1,24 @@
 //
-//  MainViewController.m
+//  MasterV2ViewController.m
 //  Score
 //
-//  Created by Ji ZHANG on 2020/5/1.
+//  Created by Ji ZHANG on 2020/5/3.
 //  Copyright © 2020 Ji ZHANG. All rights reserved.
 //
 
 #import "MainViewController.h"
-#import "Masonry.h"
+#import "BirdSightingDataController.h"
+#import "BirdSighting.h"
 
 @interface MainViewController ()
-
-@property (strong, nonatomic) UITableViewCell *birdNameCell;
-@property (strong, nonatomic) UILabel *birdNameLabel;
-@property (strong, nonatomic) UITextField *birdNameInput;
-
-@property (strong, nonatomic) UITableViewCell *locationCell;
-@property (strong, nonatomic) UILabel *locationLabel;
-@property (strong, nonatomic) UITextField *locationInput;
 
 @end
 
 @implementation MainViewController
 
-- (void)loadView {
-    [super loadView];
-
-    self.birdNameCell = [[UITableViewCell alloc] init];
-    
-    self.birdNameLabel = [[UILabel alloc] init];
-    self.birdNameLabel.text = @"Bird Name";
-    [self.birdNameCell addSubview:self.birdNameLabel];
-
-    [self.birdNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.birdNameCell.mas_leadingMargin);
-        make.centerY.equalTo(self.birdNameCell.mas_centerY);
-    }];
-
-    [self.birdNameLabel setContentHuggingPriority:UILayoutPriorityRequired
-                                          forAxis:UILayoutConstraintAxisHorizontal];
-
-    self.birdNameInput = [[UITextField alloc] init];
-    self.birdNameInput.borderStyle = UITextBorderStyleRoundedRect;
-    [self.birdNameCell addSubview:self.birdNameInput];
-
-    [self.birdNameInput mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.birdNameLabel.mas_trailing).offset(8);
-        make.baseline.equalTo(self.birdNameLabel.mas_baseline);
-        make.trailing.equalTo(self.birdNameCell.mas_trailingMargin);
-    }];
-
-    self.locationCell = [[UITableViewCell alloc] init];
-
-    self.locationLabel = [[UILabel alloc] init];
-    self.locationLabel.text = @"Location";
-    [self.locationCell addSubview:self.locationLabel];
-
-    [self.locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.locationCell.mas_leadingMargin);
-        make.centerY.equalTo(self.locationCell.mas_centerY);
-    }];
-
-    [self.locationLabel setContentHuggingPriority:UILayoutPriorityRequired
-                                          forAxis:UILayoutConstraintAxisHorizontal];
-
-    self.locationInput = [[UITextField alloc] init];
-    self.locationInput.borderStyle = UITextBorderStyleRoundedRect;
-    [self.locationCell addSubview:self.locationInput];
-
-    [self.locationInput mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.locationLabel.mas_trailing).offset(8);
-        make.baseline.equalTo(self.locationLabel.mas_baseline);
-        make.trailing.equalTo(self.locationCell.mas_trailingMargin);
-    }];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.dataController = [[BirdSightingDataController alloc] init];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -80,18 +26,33 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return self.dataController.countOfList;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 0:
-            return self.birdNameCell;
-        case 1:
-            return self.locationCell;
-        default:
-            return nil;
+    static NSString *CellIdentifier = @"BirdSightingCell";
+
+    static NSDateFormatter *formatter = nil;
+    if (!formatter) {
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
     }
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+
+    BirdSighting *sightingAtIndex = [self.dataController objectinListAtIndex:indexPath.row];
+    [[cell textLabel] setText:sightingAtIndex.name];
+    [[cell detailTextLabel] setText:[formatter stringFromDate:sightingAtIndex.date]];
+    return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
 }
 
 @end
