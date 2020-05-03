@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSMutableArray *masterBirdSightingList;
 
 - (NSUInteger)countOfList;
-- (BirdSighting *)objectinListAtIndex:(NSUInteger)theIndex;
+- (BirdSighting *)objectInListAtIndex:(NSUInteger)theIndex;
 - (void)addBirdSightingWithSighting:(BirdSighting *)sighting;
 
 @end

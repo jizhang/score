@@ -2,38 +2,31 @@
 //  MasterViewController.m
 //  Score
 //
-//  Created by Ji ZHANG on 2020/4/24.
+//  Created by Ji ZHANG on 2020/5/3.
 //  Copyright © 2020 Ji ZHANG. All rights reserved.
 //
 
+#import "BirdSighting.h"
+#import "BirdSightingDataController.h"
 #import "MasterViewController.h"
 #import "DetailViewController.h"
-#import "BirdSightingDataController.h"
-#import "BirdSighting.h"
-#import "AddSightingViewController.h"
+#import "AddViewController.h"
+
+@interface MasterViewController ()
+
+@end
 
 @implementation MasterViewController
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"Bird Sightings";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                           target:self
+                                                                                           action:@selector(addSighting)];
+
     self.dataController = [[BirdSightingDataController alloc] init];
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
-    [super viewWillAppear:animated];
-}
-
-#pragma mark - Segues
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"ShowSightingDetails"]) {
-        DetailViewController *detailViewController = [segue destinationViewController];
-        detailViewController.sighting = [self.dataController objectinListAtIndex:[self.tableView indexPathForSelectedRow].row];
-    }
-}
-
-#pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -45,18 +38,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"BirdSightingCell";
-    
+
     static NSDateFormatter *formatter = nil;
     if (!formatter) {
         formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
     }
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    BirdSighting *sightingAtIndex = [self.dataController objectinListAtIndex:indexPath.row];
-    [[cell textLabel] setText:sightingAtIndex.name];
-    [[cell detailTextLabel] setText:[formatter stringFromDate:sightingAtIndex.date]];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+
+    BirdSighting *sightingAtIndex = [self.dataController objectInListAtIndex:indexPath.row];
+    cell.textLabel.text = sightingAtIndex.name;
+    cell.detailTextLabel.text = [formatter stringFromDate:sightingAtIndex.date];
     return cell;
 }
 
@@ -64,21 +62,32 @@
     return NO;
 }
 
-- (IBAction)done:(UIStoryboardSegue *)segue {
-    if ([[segue identifier] isEqualToString:@"ReturnInput"]) {
-        AddSightingViewController *addController = [segue sourceViewController];
-        if (addController.birdSighting) {
-            [self.dataController addBirdSightingWithSighting:addController.birdSighting];
-            [[self tableView] reloadData];
-        }
-        [self dismissViewControllerAnimated:YES completion:NULL];
-    }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    BirdSighting *sighting = [self.dataController objectInListAtIndex:indexPath.row];
+    DetailViewController *vc = [[DetailViewController alloc] init];
+    vc.sighting = sighting;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (IBAction)cancel:(UIStoryboardSegue *)segue {
-    if ([[segue identifier] isEqualToString:@"CancelInput"]) {
-        [self dismissViewControllerAnimated:YES completion:NULL];
-    }
+- (void)addSighting {
+    AddViewController *vc = [[AddViewController alloc] init];
+
+    __weak typeof(self) weakSelf = self;
+    vc.doneHandler = ^(BirdSighting *sighting){ [weakSelf handleAddSighting:sighting]; };
+    vc.cancelHandler = ^{ [weakSelf handleCancel]; };
+
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void)handleAddSighting:(BirdSighting *)sighting {
+    [self.dataController addBirdSightingWithSighting:sighting];
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)handleCancel {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -6,8 +6,8 @@
 //  Copyright © 2020 Ji ZHANG. All rights reserved.
 //
 
-#import "BirdSightingDataController.h"
 #import "BirdSighting.h"
+#import "BirdSightingDataController.h"
 
 @interface BirdSightingDataController ()
 
@@ -32,6 +32,9 @@
     NSDate *today = [NSDate date];
     sighting = [[BirdSighting alloc] initWithName:@"Pigeon" location:@"Everywhere" date:today];
     [self addBirdSightingWithSighting:sighting];
+
+    sighting = [[BirdSighting alloc] initWithName:@"Kiwi" location:@"China" date:today];
+    [self addBirdSightingWithSighting:sighting];
 }
 
 - (void)setMasterBirdSightingList:(NSMutableArray *)newList {
@@ -44,7 +47,7 @@
     return [self.masterBirdSightingList count];
 }
 
-- (BirdSighting *)objectinListAtIndex:(NSUInteger)theIndex {
+- (BirdSighting *)objectInListAtIndex:(NSUInteger)theIndex {
     return [self.masterBirdSightingList objectAtIndex:theIndex];
 }
 
