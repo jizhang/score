@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddViewController : UITableViewController <UITextFieldDelegate>
+@interface AddViewController : UITableViewController
 
 @property (copy, nonatomic) void (^doneHandler)(BirdSighting *sighting);
 @property (copy, nonatomic) void (^cancelHandler)(void);

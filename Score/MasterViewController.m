@@ -24,7 +24,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                            target:self
                                                                                            action:@selector(addSighting)];
-
+    self.clearsSelectionOnViewWillAppear = YES;
     self.dataController = [[BirdSightingDataController alloc] init];
 }
 
@@ -49,7 +49,6 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 
     BirdSighting *sightingAtIndex = [self.dataController objectInListAtIndex:indexPath.row];
