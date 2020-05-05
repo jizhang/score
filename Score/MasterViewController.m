@@ -28,10 +28,6 @@
     self.dataController = [[BirdSightingDataController alloc] init];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataController.countOfList;
 }
@@ -55,10 +51,6 @@
     cell.textLabel.text = sightingAtIndex.name;
     cell.detailTextLabel.text = [formatter stringFromDate:sightingAtIndex.date];
     return cell;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

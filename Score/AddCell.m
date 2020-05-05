@@ -27,13 +27,16 @@
 }
 
 - (void)configureView:(NSString *)label value:(NSString *)value {
+    UIView *parent = self.contentView;
+
     UILabel *labelView = [[UILabel alloc] init];
     labelView.text = label;
-    [self addSubview:labelView];
+    [parent addSubview:labelView];
 
     [labelView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.mas_leadingMargin);
-        make.centerY.equalTo(self.mas_centerY);
+        make.leading.equalTo(parent.mas_leadingMargin);
+        make.top.equalTo(parent.mas_topMargin);
+        make.bottom.equalTo(parent.mas_bottomMargin);
     }];
 
     [labelView setContentHuggingPriority:UILayoutPriorityRequired
@@ -44,12 +47,12 @@
     input.text = value;
     input.borderStyle = UITextBorderStyleRoundedRect;
     input.delegate = self;
-    [self addSubview:input];
+    [parent addSubview:input];
 
     [input mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(labelView.mas_trailing).offset(8);
         make.baseline.equalTo(labelView.mas_baseline);
-        make.trailing.equalTo(self.mas_trailingMargin);
+        make.trailing.equalTo(parent.mas_trailingMargin);
     }];
 }
 
