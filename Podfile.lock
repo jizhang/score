@@ -1,16 +1,20 @@
 PODS:
+  - HexColors (4.0.0)
   - Masonry (1.1.0)
 
 DEPENDENCIES:
+  - HexColors (= 4.0.0)
   - Masonry (= 1.1.0)
 
 SPEC REPOS:
   trunk:
+    - HexColors
     - Masonry
 
 SPEC CHECKSUMS:
+  HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: 08ffe7f994c7d898fa4a5ee4c3befe09dd600b40
+PODFILE CHECKSUM: 930ec9949cf5f0e24b6334c78cac9b98f467807f
 
 COCOAPODS: 1.8.4
