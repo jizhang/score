@@ -15,6 +15,7 @@
 		7415B42F2452EFF600E0566A /* BirdSighting.m in Sources */ = {isa = PBXBuildFile; fileRef = 7415B42E2452EFF600E0566A /* BirdSighting.m */; };
 		7415B4322453001300E0566A /* BirdSightingDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7415B4312453001300E0566A /* BirdSightingDataController.m */; };
 		741B8D69245C3F6A007AB1AC /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B8D68245C3F6A007AB1AC /* AddViewController.m */; };
+		7435A689246CC79B00992014 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7435A688246CC79B00992014 /* ScoreViewController.m */; };
 		7444C68A2461112900224185 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7444C6892461112900224185 /* MainViewController.m */; };
 		74748953245ECC35007249C1 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74748952245ECC35007249C1 /* DetailViewController.m */; };
 		74AADA8A24602C7800F79642 /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AADA8924602C7800F79642 /* AddCell.m */; };
@@ -38,6 +39,8 @@
 		7415B4312453001300E0566A /* BirdSightingDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BirdSightingDataController.m; sourceTree = "<group>"; };
 		741B8D67245C3F6A007AB1AC /* AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		741B8D68245C3F6A007AB1AC /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
+		7435A687246CC79B00992014 /* ScoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
+		7435A688246CC79B00992014 /* ScoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScoreViewController.m; sourceTree = "<group>"; };
 		7444C6882461112900224185 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		7444C6892461112900224185 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		74748951245ECC35007249C1 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 			children = (
 				7444C6882461112900224185 /* MainViewController.h */,
 				7444C6892461112900224185 /* MainViewController.m */,
+				7435A687246CC79B00992014 /* ScoreViewController.h */,
+				7435A688246CC79B00992014 /* ScoreViewController.m */,
 				7413F92E245E8832009C5266 /* MasterViewController.h */,
 				7413F92F245E8832009C5266 /* MasterViewController.m */,
 				74748951245ECC35007249C1 /* DetailViewController.h */,
@@ -222,6 +227,7 @@
 				7413F930245E8832009C5266 /* MasterViewController.m in Sources */,
 				741B8D69245C3F6A007AB1AC /* AddViewController.m in Sources */,
 				7444C68A2461112900224185 /* MainViewController.m in Sources */,
+				7435A689246CC79B00992014 /* ScoreViewController.m in Sources */,
 				7415B42F2452EFF600E0566A /* BirdSighting.m in Sources */,
 				74AADA8A24602C7800F79642 /* AddCell.m in Sources */,
 				74748953245ECC35007249C1 /* DetailViewController.m in Sources */,

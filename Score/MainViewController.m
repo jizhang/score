@@ -6,42 +6,57 @@
 //  Copyright © 2020 Ji ZHANG. All rights reserved.
 //
 
-#import "Masonry.h"
-#import "HexColors.h"
-
 #import "MainViewController.h"
+#import "ScoreViewController.h"
 
 @implementation MainViewController
 
-- (void)loadView {
-    NSArray *scores = @[@"1", @"2", @"3", @"5", @"8", @"13", @"?"];
-    NSArray *colors = @[
-        [UIColor hx_colorWithHexRGBAString:@"#0EAB5E"],
-        [UIColor hx_colorWithHexRGBAString:@"#F3413D"],
-    ];
-    CGRect bounds = [UIScreen mainScreen].bounds;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"Score";
+    self.clearsSelectionOnViewWillAppear = YES;
+}
 
-    UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.contentSize = CGSizeMake(bounds.size.width * (scores.count + colors.count), bounds.size.height);
-    scrollView.pagingEnabled = YES;
-    self.view = scrollView;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
 
-    for (int i = 0; i < scores.count; ++i) {
-        CGRect frame = CGRectMake(i * bounds.size.width, 0, bounds.size.width, bounds.size.height);
-        UILabel *label = [[UILabel alloc] initWithFrame:frame];
-        label.text = scores[i];
-        label.font = [UIFont systemFontOfSize:(label.text.length > 1 ? 333 : 444)];
-        label.textAlignment = NSTextAlignmentCenter;
-        [scrollView addSubview:label];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] init];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
-    for (int i = 0; i < colors.count; ++i) {
-        int x = (i + scores.count) * bounds.size.width;
-        CGRect frame = CGRectMake(x, 0, bounds.size.width, bounds.size.height);
-        UIView *colorView = [[UIView alloc] initWithFrame:frame];
-        colorView.backgroundColor = colors[i];
-        [scrollView addSubview:colorView];
+    switch (indexPath.row) {
+        case 0:
+            cell.textLabel.text = @"Story points";
+            break;
+        case 1:
+            cell.textLabel.text = @"Traffic light";
+            break;
+        default:
+            return nil;
     }
+
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ScoreViewController *scoreViewController = [[ScoreViewController alloc] init];
+
+    switch (indexPath.row) {
+        case 0:
+            scoreViewController.scores = @[@"1", @"2", @"3", @"5", @"8", @"13", @"?"];
+            break;
+        case 1:
+            scoreViewController.scores = @[@"#10A959", @"#FFBC35", @"#F3423D"];
+            break;
+        default:
+            return;
+    }
+
+    [self.navigationController pushViewController:scoreViewController animated:YES];
 }
 
 @end
