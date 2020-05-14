@@ -18,11 +18,12 @@
 @implementation ScoreViewController
 
 - (void)loadView {
-    CGRect bounds = [UIScreen mainScreen].bounds; // TODO
+    CGRect bounds = [UIScreen mainScreen].bounds;
 
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.contentSize = CGSizeMake(bounds.size.width * self.scores.count, bounds.size.height);
     scrollView.pagingEnabled = YES;
+    scrollView.backgroundColor = UIColor.whiteColor;
     self.view = scrollView;
 
     for (int i = 0; i < self.scores.count; ++i) {
@@ -42,6 +43,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
     self.navigationController.hidesBarsOnTap = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
