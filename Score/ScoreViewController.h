@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ScoreViewController : UIViewController
 
-@property (strong, nonatomic) NSArray *scores;
+@property (strong, nonatomic) NSArray<NSString *> *scores;
 
 @end
 

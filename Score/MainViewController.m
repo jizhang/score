@@ -7,14 +7,20 @@
 //
 
 #import "MainViewController.h"
+
 #import "ScoreViewController.h"
 
 @implementation MainViewController
+
+- (instancetype)init {
+    return [super initWithStyle:UITableViewStyleGrouped];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Score";
     self.clearsSelectionOnViewWillAppear = YES;
+    self.tableView.alwaysBounceVertical = NO;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

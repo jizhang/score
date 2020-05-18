@@ -6,14 +6,10 @@
 //  Copyright © 2020 Ji ZHANG. All rights reserved.
 //
 
-#import "Masonry.h"
-#import "HexColors.h"
-
 #import "ScoreViewController.h"
 
-@interface ScoreViewController ()
-
-@end
+#import "Masonry.h"
+#import "HexColors.h"
 
 @implementation ScoreViewController
 
@@ -29,11 +25,10 @@
     for (int i = 0; i < self.scores.count; ++i) {
         CGRect frame = CGRectMake(i * bounds.size.width, 0, bounds.size.width, bounds.size.height);
         UIView *view;
-        NSString *score = self.scores[i];
-        if ([score hasPrefix:@"#"]) {
-            view = [self createColorView:score frame:frame];
+        if ([self.scores[i] hasPrefix:@"#"]) {
+            view = [self createColorView:self.scores[i] frame:frame];
         } else {
-            view = [self createTextView:score frame:frame];
+            view = [self createTextView:self.scores[i] frame:frame];
         }
         [scrollView addSubview:view];
     }
